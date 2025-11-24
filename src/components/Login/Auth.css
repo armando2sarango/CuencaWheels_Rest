@@ -1,8 +1,3 @@
-/* ========================================
-   ESTILOS COMPARTIDOS - LOGIN Y REGISTRO
-   ======================================== */
-
-/* Contenedor principal centrado */
 .auth-container,
 .login-container,
 .register-container {
@@ -312,8 +307,6 @@
 .register-card {
   animation: fadeInUp 0.5s ease-out;
 }
-
-/* Mejoras visuales adicionales */
 .auth-form .ant-select-dropdown,
 .login-form .ant-select-dropdown,
 .register-form .ant-select-dropdown {
@@ -321,7 +314,6 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
-/* Input Number sin flechas molestas (opcional) */
 .auth-form .ant-input-number-handler-wrap,
 .login-form .ant-input-number-handler-wrap,
 .register-form .ant-input-number-handler-wrap {
