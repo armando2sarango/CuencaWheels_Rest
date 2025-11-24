@@ -1,36 +1,33 @@
-import axios from 'axios';
+import axios from "axios";
+import { loaderOn, loaderOff } from "../utils/loaderManager";
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 if (!API_BASE_URL) {
   console.error('❌ ERROR: REACT_APP_API_BASE_URL no está definida');
   console.log('Variables disponibles:', Object.keys(process.env).filter(k => k.startsWith('REACT_APP_')));
 }
-
 export const apiClient = axios.create({
-  baseURL: API_BASE_URL || 'https://cuencautosgestion.runasp.net/api/v1', 
+  baseURL: API_BASE_URL || "https://cuencautosgestion.runasp.net/api/v1",
   headers: {
-    'Content-Type': 'application/json', 
-    Accept: 'application/json',
+    "Content-Type": "application/json",
+    Accept: "application/json",
   },
-  timeout: 15000, 
+  timeout: 15000,
 });
 
 apiClient.interceptors.request.use(
-  (config) => {
-    console.log('📡 Request:', config.method.toUpperCase(), config.url);
+  (config) => {loaderOn();
     return config;
   },
-  (error) => {
+  (error) => {loaderOff();
     return Promise.reject(error);
   }
 );
 
 apiClient.interceptors.response.use(
-  (response) => {
-    console.log('✅ Response:', response.status, response.config.url);
+  (response) => {loaderOff(); 
     return response;
   },
-  (error) => {
-    console.error('❌ API Error:', error.response?.status, error.message);
+  (error) => {loaderOff();
     return Promise.reject(error);
   }
 );

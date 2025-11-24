@@ -228,10 +228,6 @@ const HomeView = () => {
               </div>
             </Space>
           </Col>
-          <Col xs={24} md={12} style={{ textAlign: 'center' }}>
-            <Title level={3} className="social-title">Síguenos</Title>
-            <SocialMedia />
-          </Col>
         </Row>
       </Card>
     </div>
