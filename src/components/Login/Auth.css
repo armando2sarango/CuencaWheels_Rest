@@ -1,0 +1,336 @@
+/* ========================================
+   ESTILOS COMPARTIDOS - LOGIN Y REGISTRO
+   ======================================== */
+
+/* Contenedor principal centrado */
+.auth-container,
+.login-container,
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #023F7A 0%, #0093B3 100%);
+  padding: 20px;
+}
+
+/* Tarjetas */
+.auth-card,
+.login-card,
+.register-card {
+  width: 100%;
+  max-width: 450px;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-card:hover,
+.login-card:hover,
+.register-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* Tarjeta de registro más ancha */
+.register-card {
+  max-width: 600px;
+}
+
+/* Encabezados */
+.auth-header,
+.login-header,
+.register-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.auth-title,
+.login-title,
+.register-title {
+  margin-bottom: 8px !important;
+  color: #1f1f1f;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.auth-subtitle,
+.login-subtitle,
+.register-subtitle {
+  color: #595959;
+  font-size: 15px;
+  display: block;
+  margin-top: 8px;
+}
+
+/* Formularios */
+.auth-form,
+.login-form,
+.register-form {
+  margin-top: 24px;
+}
+
+.auth-form .ant-form-item,
+.login-form .ant-form-item,
+.register-form .ant-form-item {
+  margin-bottom: 20px;
+}
+
+/* Labels más destacados */
+.auth-form .ant-form-item-label > label,
+.login-form .ant-form-item-label > label,
+.register-form .ant-form-item-label > label {
+  font-weight: 600;
+  color: #262626;
+  font-size: 14px;
+}
+
+/* Inputs mejorados */
+.auth-form .ant-input,
+.login-form .ant-input,
+.register-form .ant-input,
+.auth-form .ant-input-password,
+.login-form .ant-input-password,
+.register-form .ant-input-password,
+.auth-form .ant-input-number,
+.login-form .ant-input-number,
+.register-form .ant-input-number,
+.auth-form .ant-select-selector,
+.login-form .ant-select-selector,
+.register-form .ant-select-selector {
+  border-radius: 8px;
+  border: 1px solid #d9d9d9;
+  transition: all 0.3s ease;
+}
+
+.auth-form .ant-input:hover,
+.login-form .ant-input:hover,
+.register-form .ant-input:hover,
+.auth-form .ant-input-password:hover,
+.login-form .ant-input-password:hover,
+.register-form .ant-input-password:hover,
+.auth-form .ant-select-selector:hover,
+.login-form .ant-select-selector:hover,
+.register-form .ant-select-selector:hover {
+  border-color: #40a9ff;
+}
+
+.auth-form .ant-input:focus,
+.login-form .ant-input:focus,
+.register-form .ant-input:focus,
+.auth-form .ant-input-password:focus,
+.login-form .ant-input-password:focus,
+.register-form .ant-input-password:focus,
+.auth-form .ant-input-focused,
+.login-form .ant-input-focused,
+.register-form .ant-input-focused {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.1);
+}
+
+/* Iconos de inputs con mejor color */
+.auth-form .ant-input-prefix,
+.login-form .ant-input-prefix,
+.register-form .ant-input-prefix {
+  color: #8c8c8c;
+  margin-right: 8px;
+}
+
+/* Botones principales */
+.auth-button,
+.login-button,
+.register-button {
+  border-radius: 8px;
+  font-weight: 600;
+  height: 44px;
+  font-size: 16px;
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.auth-button:hover,
+.login-button:hover,
+.register-button:hover {
+  background: linear-gradient(135deg, #40a9ff 0%, #1890ff 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.4);
+}
+
+.auth-button:active,
+.login-button:active,
+.register-button:active {
+  transform: translateY(0);
+}
+
+/* Checkbox personalizado */
+.auth-form .ant-checkbox-wrapper,
+.login-form .ant-checkbox-wrapper,
+.register-form .ant-checkbox-wrapper {
+  font-size: 14px;
+  color: #595959;
+}
+
+/* Separador elegante */
+.auth-divider,
+.login-divider,
+.register-divider {
+  margin: 28px 0;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* Sección de registro/login */
+.register-section,
+.login-section {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.register-text,
+.login-text {
+  font-size: 14px;
+  color: #595959;
+}
+
+.register-link,
+.login-link {
+  color: #1890ff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.register-link:hover,
+.login-link:hover {
+  color: #40a9ff;
+  text-decoration: underline;
+}
+
+/* Mensajes de error mejorados */
+.error-message {
+  margin-bottom: 16px;
+  padding: 12px;
+  color: #ff4d4f;
+  text-align: center;
+  border: 1px solid #ffccc7;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #fff1f0 0%, #ffebe8 100%);
+  font-size: 14px;
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Feedback visual en campos */
+.ant-form-item-has-success .ant-input,
+.ant-form-item-has-success .ant-input-password {
+  border-color: #52c41a;
+}
+
+.ant-form-item-has-error .ant-input,
+.ant-form-item-has-error .ant-input-password {
+  border-color: #ff4d4f;
+}
+
+/* Loading state mejorado */
+.ant-btn-loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .auth-card,
+  .login-card,
+  .register-card {
+    max-width: 100%;
+    padding: 30px 24px;
+    margin: 10px;
+  }
+
+  .auth-title,
+  .login-title,
+  .register-title {
+    font-size: 24px;
+  }
+
+  .auth-subtitle,
+  .login-subtitle,
+  .register-subtitle {
+    font-size: 14px;
+  }
+
+  .auth-button,
+  .login-button,
+  .register-button {
+    height: 40px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card,
+  .login-card,
+  .register-card {
+    padding: 24px 20px;
+  }
+
+  .auth-title,
+  .login-title,
+  .register-title {
+    font-size: 22px;
+  }
+
+  .auth-subtitle,
+  .login-subtitle,
+  .register-subtitle {
+    font-size: 13px;
+  }
+}
+
+/* Animaciones de entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.auth-card,
+.login-card,
+.register-card {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Mejoras visuales adicionales */
+.auth-form .ant-select-dropdown,
+.login-form .ant-select-dropdown,
+.register-form .ant-select-dropdown {
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Input Number sin flechas molestas (opcional) */
+.auth-form .ant-input-number-handler-wrap,
+.login-form .ant-input-number-handler-wrap,
+.register-form .ant-input-number-handler-wrap {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.auth-form .ant-input-number:hover .ant-input-number-handler-wrap,
+.login-form .ant-input-number:hover .ant-input-number-handler-wrap,
+.register-form .ant-input-number:hover .ant-input-number-handler-wrap {
+  opacity: 1;
+}
