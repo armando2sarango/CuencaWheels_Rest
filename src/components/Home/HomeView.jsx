@@ -1,39 +1,11 @@
 import React from 'react';
-import './Home.css'; 
-import { 
-  Row, 
-  Col, 
-  Card, 
-  Typography, 
-  Statistic, 
-  Space,
-  Button
-} from 'antd';
+import './Home.css';
+import { Row, Col, Card, Typography, Statistic, Space, Button, Divider } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 import {
-  SmileOutlined,
-  CarOutlined,
-  TrophyOutlined,
-  EnvironmentOutlined,
-  CalendarOutlined,
-  ScheduleOutlined,
-  TeamOutlined,
-  PhoneOutlined,
-  MailOutlined,
-  HomeOutlined,
-  ClockCircleOutlined,
-  FacebookOutlined,
-  InstagramOutlined,
-  TwitterOutlined,
-  LinkedinOutlined
-} from '@ant-design/icons';
-// import { getAuth } from '../../services/auth';
-
-// const auth = getAuth();
-// if (auth) {
-//   console.log('Usuario logueado:', auth.userName, auth.userId);
-// }
+  SmileOutlined, CarOutlined, TrophyOutlined, EnvironmentOutlined, CalendarOutlined, ScheduleOutlined, TeamOutlined, PhoneOutlined, MailOutlined, HomeOutlined, ClockCircleOutlined, FacebookOutlined, InstagramOutlined, TwitterOutlined, LinkedinOutlined
+} from '@ant-design/icons'; 
 const { Title, Paragraph, Text } = Typography;
 
 const HomeView = () => {
@@ -84,6 +56,12 @@ const HomeView = () => {
       direccion: "Av. Orellana E4-431 y Juan León Mera, junto al hotel Marriot.",
       horario: "Lunes a Viernes: 8:00 AM - 6:00 PM | Sábados: 9:00 AM - 2:00 PM"
     },
+    redes: {
+      facebook: "https://facebook.com/cuencawheels",
+      instagram: "https://instagram.com/cuencawheels",
+      twitter: "https://twitter.com/cuencawheels",
+      linkedin: "https://linkedin.com/company/cuencawheels"
+    }
   };
 
   const iconMap = {
@@ -101,9 +79,29 @@ const HomeView = () => {
     linkedin: <LinkedinOutlined />
   };
 
+  const renderIcon = (iconName) => {
+    const IconComponent = iconMap[iconName];
+    if (IconComponent) {
+      return React.cloneElement(IconComponent, { style: { fontSize: '40px' } });
+    }
+    return null;
+  };
+
+  // Componente de Redes Sociales
+  const SocialMedia = () => (
+    <Space size="large" className="social-media-container">
+      {Object.entries(empresaInfo.redes).map(([key, url]) => (
+        <a key={key} href={url} target="_blank" rel="noopener noreferrer" className="social-icon-link">
+          {iconMap[key]}
+        </a>
+      ))}
+    </Space>
+  );
+
   return (
     <div className="home-container">
-      
+
+      {/* 🌟 Sección Hero con Fondo Animado */}
       <div className="hero-section">
         <Title level={1} className="hero-title">
           {empresaInfo.nombre}
@@ -112,107 +110,119 @@ const HomeView = () => {
           {empresaInfo.descripcion}
         </Paragraph>
         <Space size="large">
-          <Button 
-            size="large" 
-            className="hero-button"
+          <Button
+            size="large"
+            className="hero-button primary"
             onClick={() => navigate('/autos')}
           >
-            Ver Vehículos
+            <CarOutlined /> Ver Vehículos
           </Button>
-          <Button 
-          
-            size="large" 
-            className="hero-button"
+          <Button
+            size="large"
+            className="hero-button secondary"
             onClick={() => window.open('https://wa.link/0an2d8', '_blank')}
           >
-            Contáctanos
+            <PhoneOutlined /> Contáctanos
           </Button>
         </Space>
       </div>
+      
 
-      {/* Estadísticas */}
-      <Row gutter={[24, 24]} style={{ marginBottom: '48px' }}>
+      {/* ✨ Estadísticas Destacadas */}
+      <Row gutter={[24, 24]} className="section-spacing">
         {empresaInfo.estadisticas.map((stat, index) => (
           <Col xs={24} sm={12} lg={6} key={index}>
-            <Card hoverable className="stat-card">
-              <div className="stat-icon">
-                {iconMap[stat.icono]}
-              </div>
-              <Statistic 
-                title={stat.titulo} 
-                value={stat.valor}
-                valueStyle={{ color: '#4c68e5', fontWeight: 'bold' }}
-              />
+            <Card hoverable className="stat-card elegant-shadow transition-effect">
+              <Space direction="vertical" align="center" style={{ width: '100%' }}>
+                <div className="stat-icon-wrapper">
+                  {renderIcon(stat.icono)}
+                </div>
+                <Statistic
+                  title={<Text strong>{stat.titulo}</Text>}
+                  value={stat.valor}
+                  valueStyle={{ color: '#007bff', fontWeight: '800', fontSize: '2em' }}
+                />
+              </Space>
             </Card>
           </Col>
         ))}
       </Row>
 
-      <Row gutter={[24, 24]} style={{ marginBottom: '48px' }}>
+      <Divider orientation="left" className="divider-elegant">
+        <Title level={2} className="section-title">Nuestra Empresa 🏢</Title>
+      </Divider>
+
+      {/* 🎯 Misión y Visión con Estilo */}
+      <Row gutter={[24, 24]} className="section-spacing">
         <Col xs={24} lg={12}>
-          <Card title={<Title level={3}>Nuestra Misión</Title>} className="mision-card">
-            <Paragraph style={{ fontSize: '16px' }}>{empresaInfo.mision}</Paragraph>
+          <Card title={<Title level={3} className="card-title">Nuestra Misión</Title>} className="mision-card elegant-shadow transition-effect">
+            <Paragraph className="card-paragraph">{empresaInfo.mision}</Paragraph>
           </Card>
         </Col>
         <Col xs={24} lg={12}>
-          <Card title={<Title level={3}>Nuestra Visión</Title>} className="vision-card">
-            <Paragraph style={{ fontSize: '16px' }}>{empresaInfo.vision}</Paragraph>
+          <Card title={<Title level={3} className="card-title">Nuestra Visión</Title>} className="vision-card elegant-shadow transition-effect">
+            <Paragraph className="card-paragraph">{empresaInfo.vision}</Paragraph>
           </Card>
         </Col>
       </Row>
 
-      <Card 
-        title={<Title level={3}>Nuestros Valores</Title>} 
-        className="valores-container"
+      {/* 🤝 Valores con Diseño de Grid */}
+      <Card
+        title={<Title level={2} className="section-title" style={{ textAlign: 'center' }}>Nuestros Valores</Title>}
+        className="valores-container elegant-shadow section-spacing"
       >
-        <Row gutter={[16, 16]}>
+        <Row gutter={[24, 24]}>
           {empresaInfo.valores.map((valor, index) => (
             <Col xs={24} sm={12} lg={6} key={index}>
-              <div className="valor-item">
-                <Text className="valor-text">{valor}</Text>
+              <div className="valor-item transition-effect">
+                <Text strong className="valor-text">{valor}</Text>
               </div>
             </Col>
           ))}
         </Row>
       </Card>
 
-      {/* Servicios */}
-      <Title level={2} style={{ textAlign: 'center', marginBottom: '32px' }}>
-        Nuestros Servicios
-      </Title>
-      <Row gutter={[24, 24]} style={{ marginBottom: '48px' }}>
+      {/* ⚙️ Servicios con Iconos Atractivos */}
+      <Divider orientation="center" className="divider-elegant">
+        <Title level={2} className="section-title">Nuestros Servicios Destacados 🛠️</Title>
+      </Divider>
+      <Row gutter={[24, 24]} className="section-spacing">
         {empresaInfo.servicios.map((servicio, index) => (
           <Col xs={24} sm={12} lg={6} key={index}>
-            <Card hoverable className="servicio-card">
-              <div className="servicio-icon">
-                {iconMap[servicio.icono]}
+            <Card hoverable className="servicio-card elegant-shadow transition-effect">
+              <div className="servicio-icon-wrapper">
+                {renderIcon(servicio.icono)}
               </div>
-              <Title level={4}>{servicio.titulo}</Title>
-              <Paragraph>{servicio.descripcion}</Paragraph>
+              <Title level={4} className="servicio-title">{servicio.titulo}</Title>
+              <Paragraph className="servicio-paragraph">{servicio.descripcion}</Paragraph>
             </Card>
           </Col>
         ))}
       </Row>
-      <Card 
-        title={<Title level={2} style={{ textAlign: 'center' }}>Contáctanos</Title>} 
-        className="contact-card"
+
+      {/* 📞 Contacto y Redes Sociales */}
+      <Divider orientation="right" className="divider-elegant">
+        <Title level={2} className="section-title">Hablemos 📧</Title>
+      </Divider>
+      <Card
+        className="contact-card elegant-shadow section-spacing"
       >
-        <Row gutter={[24, 24]}>
+        <Row gutter={[32, 32]} align="middle">
           <Col xs={24} md={12}>
             <Space direction="vertical" size="large" style={{ width: '100%' }}>
-              <div>
+              <div className="contact-line">
                 <PhoneOutlined className="contact-icon" />
-                <Text className="contact-info">{empresaInfo.contacto.telefono}</Text>
+                <Text strong className="contact-info">{empresaInfo.contacto.telefono}</Text>
               </div>
-              <div>
+              <div className="contact-line">
                 <MailOutlined className="contact-icon" />
-                <Text className="contact-info">{empresaInfo.contacto.email}</Text>
+                <Text strong className="contact-info">{empresaInfo.contacto.email}</Text>
               </div>
-              <div>
+              <div className="contact-line">
                 <HomeOutlined className="contact-icon" />
                 <Text className="contact-info">{empresaInfo.contacto.direccion}</Text>
               </div>
-              <div>
+              <div className="contact-line">
                 <ClockCircleOutlined className="contact-icon" />
                 <Text className="contact-info">{empresaInfo.contacto.horario}</Text>
               </div>

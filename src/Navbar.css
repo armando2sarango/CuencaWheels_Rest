@@ -1,0 +1,119 @@
+/* Fondo navbar */
+.navbar-header {
+  background-color: #105890;
+  padding: 0 20px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+/* Contenedor general */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Logo + menú */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-logo img {
+  width: 55px;
+}
+
+.navbar-logo span {
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(11, 11, 11);
+}
+
+/* ---- MENU ---- */
+.navbar-menu {
+  background: transparent !important;
+  border-bottom: none !important;
+
+  /* ESTA ES LA CLAVE PARA QUE NO APAREZCAN LOS "..." */
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-menu .ant-menu-item {
+  font-size: 16px;
+  transition: 0.25s ease-in-out;
+}
+
+/* Íconos del menú */
+.navbar-menu .ant-menu-item i,
+.navbar-menu .ant-menu-item span svg {
+  color: white !important;
+}
+
+/* Texto normal */
+.navbar-menu .ant-menu-item a {
+  color: white !important;
+  transition: 0.25s;
+}
+
+/* Hover */
+.navbar-menu .ant-menu-item:hover {
+  background-color: white !important;
+  border-radius: 6px;
+}
+
+.navbar-menu .ant-menu-item:hover a {
+  color: #105890 !important;
+}
+
+.navbar-menu .ant-menu-item:hover i,
+.navbar-menu .ant-menu-item:hover span svg {
+  color: #105890 !important;
+}
+
+/* Seleccionado */
+/* ===== ÍTEM SELECCIONADO: texto + íconos en NEGRO ===== */
+.navbar-menu .ant-menu-item.ant-menu-item-selected {
+  background-color: white !important;
+  border-radius: 6px;
+}
+
+/* Texto */
+.navbar-menu .ant-menu-item.ant-menu-item-selected a,
+.navbar-menu .ant-menu-item.ant-menu-item-selected .ant-menu-title-content,
+.navbar-menu .ant-menu-item.ant-menu-item-selected .ant-menu-title-content * {
+  color: #000 !important;
+}
+
+/* Íconos (AntD usa color, fill o stroke según el icono) */
+.navbar-menu .ant-menu-item.ant-menu-item-selected .anticon,
+.navbar-menu .ant-menu-item.ant-menu-item-selected svg,
+.navbar-menu .ant-menu-item.ant-menu-item-selected span svg {
+  color: #000 !important;
+  fill: #000 !important;
+  stroke: #000 !important;
+}
+
+
+/* Botón derecho */
+.ant-btn-primary {
+  background-color: #3d7afc;
+  border-color: #3d7afc;
+}
+
+.ant-btn-primary:hover {
+  background-color: #5f95ff !important;
+  border-color: #5f95ff !important;
+}
